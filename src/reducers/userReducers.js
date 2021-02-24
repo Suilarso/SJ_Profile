@@ -1,8 +1,8 @@
 import {
-  // USER_LOGIN_FAIL,
-  // USER_LOGIN_REQUEST,
-  // USER_LOGIN_SUCCESS,
-  // USER_LOGOUT,
+  USER_LOGIN_FAIL,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
@@ -17,20 +17,22 @@ import {
   // USER_UPDATE_PROFILE_RESET,
 } from '../constants/userConstants'
 
-// export function userLoginReducer(state = {}, action) {
-//   switch (action.type) {
-//     case USER_LOGIN_REQUEST:
-//       return { loading: true }
-//     case USER_LOGIN_SUCCESS:
-//       return { loading: false, userAuth: action.payload }
-//     case USER_LOGIN_FAIL:
-//       return { loading: false, error: action.payload }
-//     case USER_LOGOUT:
-//       return {}
-//     default:
-//       return state
-//   }
-// }
+export function userLoginReducer(state = {}, action)
+{
+  switch (action.type)
+  {
+    case USER_LOGIN_REQUEST:
+      return { loading: true };
+    case USER_LOGIN_SUCCESS:
+      return { loading: false, userAuth: action.payload };
+    case USER_LOGIN_FAIL:
+      return { loading: false, error: action.payload };
+    case USER_LOGOUT:
+      return {}
+    default:
+      return state;
+  }
+}
 
 export function userRegisterReducer(state = {}, action)
 {

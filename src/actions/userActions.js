@@ -1,9 +1,9 @@
 import axios from 'axios'
 import {
-  // USER_LOGIN_REQUEST,
+  USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
-  // USER_LOGIN_FAIL,
-  // USER_LOGOUT,
+  USER_LOGIN_FAIL,
+  USER_LOGOUT,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
@@ -16,46 +16,53 @@ import {
   // USER_UPDATE_PROFILE_FAIL,
 } from '../constants/userConstants'
 
-// export function login(email, password) {
-//   return async function (dispatch) {
-//     try {
-//       dispatch({
-//         type: USER_LOGIN_REQUEST,
-//       })
 
-//       const config = {
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       }
+export function login(email, password)
+{
+  return async function (dispatch)
+  {
+    try
+    {
+      dispatch({
+        type: USER_LOGIN_REQUEST,
+      });
 
-//       const { data } = await axios.post(
-//         '/api/users/login',
-//         { email, password },
-//         config
-//       )
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
 
-//       dispatch({
-//         type: USER_LOGIN_SUCCESS,
-//         payload: data,
-//       })
+      const { data } = await axios.post(
+        '/api/users/login',
+        { email, password },
+        config
+      );
 
-//       localStorage.setItem('userAuth', JSON.stringify(data))
-//     } catch (error) {
-//       dispatch({
-//         type: USER_LOGIN_FAIL,
-//         payload: error.response.data.message,
-//       })
-//     }
-//   }
-// }
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: data,
+      });
 
-// export function logout() {
-//   return function (dispatch) {
-//     localStorage.removeItem('userAuth')
-//     dispatch({ type: USER_LOGOUT })
-//   }
-// }
+      localStorage.setItem('userToken', JSON.stringify(data))
+    } catch (error)
+    {
+      dispatch({
+        type: USER_LOGIN_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  }
+}
+
+export function logout()
+{
+  return function (dispatch)
+  {
+    localStorage.removeItem('userToken');
+    dispatch({ type: USER_LOGOUT });
+  }
+}
 
 export function register(name, email, password)
 {
@@ -85,7 +92,7 @@ export function register(name, email, password)
 
       dispatch({type: USER_REGISTER_RESET});
 
-      localStorage.setItem('userAuth', JSON.stringify(data));
+      localStorage.setItem('userToken', JSON.stringify(data));
     } catch (error)
     {
       dispatch({
@@ -96,7 +103,7 @@ export function register(name, email, password)
   }
 }
 
-// export function getUserDetails(userAuth) {
+// export function getUserDetails(userToken) {
 //   return async function (dispatch) {
 //     try {
 //       dispatch({
@@ -105,7 +112,7 @@ export function register(name, email, password)
 
 //       const config = {
 //         headers: {
-//           Authorization: `Bearer ${userAuth.token}`,
+//           Authorization: `Bearer ${userToken.token}`,
 //         },
 //       }
 
@@ -128,7 +135,7 @@ export function register(name, email, password)
 //   }
 // }
 
-// export function updateUserProfile(userAuth, updatedUser) {
+// export function updateUserProfile(userToken, updatedUser) {
 //   return async function (dispatch) {
 //     try {
 //       dispatch({
@@ -138,7 +145,7 @@ export function register(name, email, password)
 //       const config = {
 //         headers: {
 //           'Content-Type': 'application/json',
-//           Authorization: `Bearer ${userAuth.token}`,
+//           Authorization: `Bearer ${userToken.token}`,
 //         },
 //       }
 
@@ -161,7 +168,7 @@ export function register(name, email, password)
 //         type: USER_DETAILS_SUCCESS,
 //         payload: data,
 //       })
-//       localStorage.setItem('userAuth', JSON.stringify(data))
+//       localStorage.setItem('userToken', JSON.stringify(data))
 //     } catch (error) {
 //       const message = error.response.data.message
 //       if (message === 'Not authorized, token failed') {
