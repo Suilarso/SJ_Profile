@@ -13,7 +13,8 @@ export default function Header()
 
   const logoutHandler = () => { dispatch(logout()) }
 
-  return (
+  return
+  (
     <header>
       <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
         <Container>
