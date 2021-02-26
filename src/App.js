@@ -14,16 +14,16 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      {/* <main className='py-5'>
+      <main className='py-5'>
         <Container>
           <Route path='/' component={HomeScreen} exact />
           <Route path='/login' component={LoginScreen} />
-          <Route path='/register' component={RegisterScreen} />
-          <Route path='/profile' component={ProfileScreen} />
-          <Route path='/additem' component={AddItemsScreen} exact />
-          <Route path='/items' component={ItemMgmtScreen} exact />
+          {/* <Route path='/register' component={RegisterScreen} /> */}
+          {/* <Route path='/profile' component={ProfileScreen} /> */}
+          {/* <Route path='/additem' component={AddItemsScreen} exact /> */}
+          {/* <Route path='/items' component={ItemMgmtScreen} exact /> */}
         </Container>
-      </main> */}
+      </main>
     </BrowserRouter>
   )
 }
