@@ -1,16 +1,17 @@
 import React from 'react';
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Header from './components/Header';
-// import HomeScreen from './screens/HomeScreen'
-// import LoginScreen from './screens/LoginScreen'
+import HomeScreen from './screens/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
 // import RegisterScreen from './screens/RegisterScreen'
 // import ProfileScreen from './screens/ProfileScreen'
 
 
 //<img src={logo} className="App-logo" alt="logo" />
-function App() {
+function App()
+{
   return (
     <BrowserRouter>
       <Header />
