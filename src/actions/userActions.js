@@ -23,9 +23,7 @@ export function login(email, password)
   {
     try
     {
-      dispatch({
-        type: USER_LOGIN_REQUEST,
-      });
+      dispatch({type: USER_LOGIN_REQUEST, });
 
       const config = {
         headers: {
@@ -39,18 +37,12 @@ export function login(email, password)
         config
       );
 
-      dispatch({
-        type: USER_LOGIN_SUCCESS,
-        payload: data,
-      });
+      dispatch({type: USER_LOGIN_SUCCESS, payload: data, });
 
       localStorage.setItem('userToken', JSON.stringify(data))
     } catch (error)
     {
-      dispatch({
-        type: USER_LOGIN_FAIL,
-        payload: error.response.data.message,
-      });
+      dispatch({type: USER_LOGIN_FAIL, payload: error.response.data.message, });
     }
   }
 }
