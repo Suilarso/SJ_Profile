@@ -32,7 +32,7 @@ export default function LoginScreen({ history })
 
   return (
     <FormContainer>
-      <h2 className='py-2'>Log in to DoneDeals</h2>
+      <h2 className='py-2'>Log in to Suilarso's Profile</h2>
       {error && <Message variant='danger'>{error}</Message>}
       {loading ? (
         <Loader />
