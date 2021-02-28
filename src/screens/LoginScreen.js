@@ -11,7 +11,7 @@ import { login } from '../actions/userActions'
 export default function LoginScreen({ history })
 {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState(' ');
+  const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
 
