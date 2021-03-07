@@ -5,8 +5,8 @@ import { Container } from 'react-bootstrap';
 import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
-// import RegisterScreen from './screens/RegisterScreen'
-// import ProfileScreen from './screens/ProfileScreen'
+import RegisterScreen from './screens/RegisterScreen'
+import ProfileScreen from './screens/ProfileScreen'
 
 
 //<img src={logo} className="App-logo" alt="logo" />
@@ -19,8 +19,8 @@ function App()
         <Container>
           <Route path='/' component={HomeScreen} exact />
           <Route path='/login' component={LoginScreen} />
-          {/* <Route path='/register' component={RegisterScreen} /> */}
-          {/* <Route path='/profile' component={ProfileScreen} /> */}
+          <Route path='/register' component={RegisterScreen} />
+          <Route path='/profile' component={ProfileScreen} />
           {/* <Route path='/additem' component={AddItemsScreen} exact /> */}
           {/* <Route path='/items' component={ItemMgmtScreen} exact /> */}
         </Container>

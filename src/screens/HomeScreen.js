@@ -4,7 +4,7 @@ export default function HomeScreen()
 {
   return (
     <div>
-      <h1>Welcome</h1>
+      <h1>Suilarso Japit</h1>
     </div>
   );
 }
