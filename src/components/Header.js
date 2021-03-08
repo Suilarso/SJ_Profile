@@ -18,7 +18,7 @@ export default function Header()
       <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>SJ</Navbar.Brand>
+            <Navbar.Brand>Suilarso</Navbar.Brand>
           </LinkContainer>
           
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
