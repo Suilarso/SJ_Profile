@@ -95,81 +95,87 @@ export function register(name, email, password)
   }
 }
 
-// export function getUserDetails(userToken) {
-//   return async function (dispatch) {
-//     try {
-//       dispatch({
-//         type: USER_DETAILS_REQUEST,
-//       })
+export function getUserDetails(userToken) {
 
-//       const config = {
-//         headers: {
-//           Authorization: `Bearer ${userToken.token}`,
-//         },
-//       }
+  return async function (dispatch) {
+    try {
 
-//       const { data } = await axios.get('/api/users/profile', config)
+      dispatch({
+        type: USER_DETAILS_REQUEST,
+      });
 
-//       dispatch({
-//         type: USER_DETAILS_SUCCESS,
-//         payload: data,
-//       })
-//     } catch (error) {
-//       const message = error.response.data.message
-//       if (message === 'Not authorized, token failed') {
-//         dispatch(logout())
-//       }
-//       dispatch({
-//         type: USER_DETAILS_FAIL,
-//         payload: message,
-//       })
-//     }
-//   }
-// }
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userToken.token}`,
+        },
+      }
 
-// export function updateUserProfile(userToken, updatedUser) {
-//   return async function (dispatch) {
-//     try {
-//       dispatch({
-//         type: USER_UPDATE_PROFILE_REQUEST,
-//       })
+      const { data } = await axios.get('/api/users/profile', config);
 
-//       const config = {
-//         headers: {
-//           'Content-Type': 'application/json',
-//           Authorization: `Bearer ${userToken.token}`,
-//         },
-//       }
+      dispatch({
+        type: USER_DETAILS_SUCCESS,
+        payload: data,
+      });
 
-//       const { data } = await axios.put(
-//         `/api/users/profile`,
-//         updatedUser,
-//         config
-//       )
+    } catch (error) {
 
-//       dispatch({
-//         type: USER_UPDATE_PROFILE_SUCCESS,
-//       })
+      const message = error.response.data.message
+      if (message === 'Not authorized, token failed') {
+        dispatch(logout())
+      }
+      dispatch({
+        type: USER_DETAILS_FAIL,
+        payload: message,
+      });
 
-//       dispatch({
-//         type: USER_LOGIN_SUCCESS,
-//         payload: data,
-//       })
+    }
+  }
+}
 
-//       dispatch({
-//         type: USER_DETAILS_SUCCESS,
-//         payload: data,
-//       })
-//       localStorage.setItem('userToken', JSON.stringify(data))
-//     } catch (error) {
-//       const message = error.response.data.message
-//       if (message === 'Not authorized, token failed') {
-//         dispatch(logout())
-//       }
-//       dispatch({
-//         type: USER_UPDATE_PROFILE_FAIL,
-//         payload: message,
-//       })
-//     }
-//   }
-// }
+export function updateUserProfile(userToken, updatedUser) {
+
+  return async function (dispatch) {
+    try {
+      dispatch({
+        type: USER_UPDATE_PROFILE_REQUEST,
+      });
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken.token}`,
+        },
+      }
+
+      const { data } = await axios.put(
+        `/api/users/profile`,
+        updatedUser,
+        config
+      );
+
+      dispatch({
+        type: USER_UPDATE_PROFILE_SUCCESS,
+      });
+
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: data,
+      });
+
+      dispatch({
+        type: USER_DETAILS_SUCCESS,
+        payload: data,
+      });
+      localStorage.setItem('userToken', JSON.stringify(data));
+    } catch (error) {
+      const message = error.response.data.message
+      if (message === 'Not authorized, token failed') {
+        dispatch(logout());
+      }
+      dispatch({
+        type: USER_UPDATE_PROFILE_FAIL,
+        payload: message,
+      });
+    }
+  }
+}
