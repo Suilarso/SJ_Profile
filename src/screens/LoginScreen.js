@@ -32,7 +32,7 @@ export default function LoginScreen({ history })
 
   return (
     <FormContainer>
-      <h2 className='py-2'>Log in to Suilarso's Profile</h2>
+      <h4 className='py-2'>Log in to Suilarso's Profile</h4>
       {error && <Message variant='danger'>{error}</Message>}
       {loading ? (
         <Loader />
@@ -68,7 +68,7 @@ export default function LoginScreen({ history })
 
       <Row className='py-3 text-center'>
         <Col>
-          Need an account? <Link to='/register'>Sign Up</Link>
+          <Link to='/register'>Sign Up</Link> for an account 
         </Col>
       </Row>
     </FormContainer>
