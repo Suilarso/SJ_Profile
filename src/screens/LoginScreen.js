@@ -15,14 +15,14 @@ export default function LoginScreen({ history })
 
   const dispatch = useDispatch();
 
-  const { loading, error, userAuth } = useSelector((state) => state.userLogin);
+  const { loading, error, userToken } = useSelector((state) => state.userLogin);
 
   useEffect(() => {
-    if (userAuth)
+    if (userToken)
     {
       history.push('/')
     }
-  }, [history, userAuth]);
+  }, [history, userToken]);
 
   function submitHandler(e)
   {
