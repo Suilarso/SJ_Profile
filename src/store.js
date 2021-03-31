@@ -4,8 +4,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   userLoginReducer,
   userRegisterReducer,
-  // userDetailsReducer,
-  // userUpdateProfileReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
 } from './reducers/userReducers'
 // import { addItemReducer, itemGetDetailsReducer } from './reducers/itemReducers';
 
@@ -13,8 +13,8 @@ import {
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  // userDetails: userDetailsReducer,
-  // userUpdateProfile: userUpdateProfileReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
   // addItem: addItemReducer,
   // getItemDetails: itemGetDetailsReducer,
 })
