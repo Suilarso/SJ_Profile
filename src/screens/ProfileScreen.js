@@ -18,18 +18,18 @@ export default function ProfileScreen({ history }) {
 
   const { loading, error, userInfo } = useSelector((state) => state.userDetails);
 
-  const { userAuth } = useSelector((state) => state.userLogin);
+  const { userToken } = useSelector((state) => state.userLogin);
 
   const { success, failure } = useSelector((state) => state.userUpdateProfile);
 
   // Fetching user details
   useEffect(() => {
-    if (!userAuth) {
+    if (!userToken) {
       history.push('/login');
     } else {
-      dispatch(getUserDetails(userAuth));
+      dispatch(getUserDetails(userToken));
     }
-  }, [dispatch, history, userAuth]);
+  }, [dispatch, history, userToken]);
 
   // Populating the form with user details
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function ProfileScreen({ history }) {
       setMessage('Passwords do not match');
     } else {
       dispatch(
-        updateUserProfile(userAuth, { id: userInfo._id, name, email, password })
+        updateUserProfile(userToken, { id: userInfo._id, name, email, password })
       );
     }
   }

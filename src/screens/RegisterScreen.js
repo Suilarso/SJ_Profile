@@ -19,13 +19,13 @@ export default function RegisterScreen({ history }) {
 
   const { loading, error } = useSelector((state) => state.userRegister);
 
-  const { userAuth } = useSelector((state) => state.userLogin);
+  const { userToken } = useSelector((state) => state.userLogin);
 
   useEffect(() => {
-    if (userAuth) {
+    if (userToken) {
       history.push('/');
     }
-  }, [history, userAuth]);
+  }, [history, userToken]);
 
   function submitHandler(e) {
     e.preventDefault()
