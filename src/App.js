@@ -9,7 +9,6 @@ import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
 
 
-//<img src={logo} className="App-logo" alt="logo" />
 function App()
 {
   return (
@@ -30,6 +29,3 @@ function App()
 }
 
 export default App;
-
-
-
